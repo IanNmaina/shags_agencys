@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import Listing
 from .forms import ListingForm
 
@@ -20,8 +20,14 @@ def listing_retrieve(request,pk):
     return render(request,"listing.html",context)
     import requests
 def listing_create(request):
-    form = ListingForm()
+    form = ListingForm()  # Create an instance of the form
+    if request.method == "POST":
+        form = ListingForm(request.POST)  # Bind data to the form
+        if form.is_valid():  # Check if the form data is valid
+            form.save()  # Save the form data to the database
+            return redirect("/")  # Redirect to the homepage after successful form submission
+
     context = {
-        "form": form
+        "form": form  # Pass the form to the template context
     }
-    return render(request,"listing_create.html",context)
+    return render(request, "listing_create.html", context)  # Render the template with the form
