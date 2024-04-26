@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property List</title>
+</head>
+<body>
+    <h1>Properties for Rent</h1>
+    <ul>
+        <ul>
+          {% for listing in listings %}
+            <li style="color:red;">
+          <p><a href="listings/{{listing.id}}">{{ listing.title }}</a></p>
+              <!-- - {{ listing.description }} - {{ listing.price }} -->
+            </li>
+          {% endfor %}
+            </ul>        
+    </ul>
+</body>
+</html>
