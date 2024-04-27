@@ -6,16 +6,21 @@
     <title>Property List</title>
 </head>
 <body>
+  {% extends "base.html" %}
+  {% block content %}
     <h1>Properties for Rent</h1>
     <ul>
         <ul>
           {% for listing in listings %}
-            <li style="color:red;">
-          <p><a href="listings/{{listing.id}}">{{ listing.title }}</a></p>
-              <!-- - {{ listing.description }} - {{ listing.price }} -->
-            </li>
+            <li>
+              <div class="mt-2 px-3 py-2 bg-gray-100 rounded-sm">
+                <h3 class="text-3xl text-gray-900">{{ listing.title }}</h3>
+                <a href="/listings/{{ listing.id }}/" class="text-blue-500">
+                  View details</a>
+              </div>
           {% endfor %}
             </ul>        
     </ul>
+    {% endblock content %}
 </body>
 </html>
